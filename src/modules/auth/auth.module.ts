@@ -5,6 +5,7 @@ import { PrismaService } from '../../common/services/prisma.service';
 import { AuthController } from './controllers/auth.controller';
 import { HelperHashService } from './services/helper.hash.service';
 import { UserService } from 'src/modules/user/services/user.service';
+import { UserDetailService } from '../userdetail/services/userdetail.service';
 import { PassportModule } from '@nestjs/passport';
 import { AuthJwtAccessStrategy } from 'src/strategies/jwt.access.strategy';
 import { AuthJwtRefreshStrategy } from 'src/strategies/jwt.refresh.strategy';
@@ -45,6 +46,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     HelperHashService,
     UserService,
     PrismaService,
+    UserDetailService
   ],
   exports: [AuthService, HelperHashService],
 })

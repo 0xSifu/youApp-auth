@@ -22,7 +22,26 @@ model User {
   isActive  Boolean  @default(true) @map("is_active")
   isDelete  Boolean  @default(false) @map("is_delete")
   ipAddress String?  @map("ip_address")
+  userDetail UserDetail?
   log       Json[]
 
   @@map("user")
+}
+
+model UserDetail {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String   @unique @map("user_id") @db.ObjectId
+  user       User     @relation(fields: [userId], references: [id])
+  display_name String
+  gender     String
+  birthday   DateTime
+  horoscope  String
+  zodiac     String
+  height     Int
+  weight     Int
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@map("user_detail")
 }

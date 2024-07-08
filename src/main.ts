@@ -43,7 +43,8 @@ async function bootstrap() {
     'app.versioning.enable',
   );
 
-  app.useGlobalPipes(new ValidationPipe());
+  // app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.setGlobalPrefix(globalPrefix);
   if (versionEnable) {
     app.enableVersioning({
